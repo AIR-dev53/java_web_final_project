@@ -27,14 +27,14 @@ public class DogsController {
         return ResponseEntity.status(HttpStatus.CREATED).body(savedDogs);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/dogs")
     public ResponseEntity<Dogs> updateDogs(@PathVariable Long id, @RequestBody Dogs dogs) {
         if (!dogsRepository.existsById(id)) {
             return ResponseEntity.notFound().build();
         }
-        book.setId(id);
-        Book updatedBook = bookRepository.save(book);
-        return ResponseEntity.ok(updatedBook);
+        dogs.setId(id);
+        Dogs updatedDogs = dogsRepository.save(dogs);
+        return ResponseEntity.ok(updatedDogs);
     }
 
     @DeleteMapping("/{id}")
@@ -42,7 +42,7 @@ public class DogsController {
         if (!dogsRepository.existsById(id)) {
             return ResponseEntity.notFound().build();
         }
-        bookRepository.deleteById(id);
+       dogsRepository.deleteById(id);
         return ResponseEntity.noContent().build();
     }
 
